@@ -24,15 +24,10 @@ export async function getStaticPaths() {
   // Call an external API endpoint to get posts
   const res = await fetch("http://localhost:4000/data");
   const pathsources = await res.json();
-  //const obj = JSON.parse(datasource2)
-
   // Get the paths we want to pre-render based on posts
-
   const paths = pathsources.map((pathsource) => ({
     params: { id: pathsource.path },
   }));
-
-  //console.log(paths)
   // We'll pre-render only these paths at build time.
   // { fallback: false } means other routes should 404.
   return { paths, fallback: false };
@@ -42,8 +37,6 @@ export async function getStaticProps({ params }) {
   // Call an external API endpoint to get posts
   const res = await fetch(`http://localhost:4000/data/${params.id}`);
   const datasource = await res.json()
-  //console.log(params);
-  console.log(datasource)
   // By returning { props: { data } }, the page component
   // will receive `data` as a prop at build time
   return {
