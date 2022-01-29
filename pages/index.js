@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
-export default function Home() {
+export default function Home({datasource}) {
   return (
     <div className={styles.container}>
       <Head>
@@ -13,11 +13,24 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Integrate SMS in Salesforce with C#
+          Integrate {datasource.data[1].channel} in {datasource.data[1].platform} with {datasource.data[1].language}
         </h1>
-      </main>
-
-      
+      </main>    
     </div>
   )
+}
+
+
+export async function getStaticProps() {
+  // Call an external API endpoint to get posts
+  const res = await fetch('http://localhost:4000/data')
+  const datasource = await res.json()
+
+  // By returning { props: { data } }, the Home component
+  // will receive `data` as a prop at build time
+  return {
+    props: {
+      datasource,
+    },
+  }
 }
