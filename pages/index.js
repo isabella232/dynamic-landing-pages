@@ -17,8 +17,8 @@ export default function Home({datasource}) {
                             <h5 className="title-label">Free Trial</h5>
                             <h1 className="main-title">Get Your Own WhatsApp Business Account </h1>
                             <p className="main-description">Say ˝Hello˝ to your customers on their favorite chat app and provide always-on service with a chatbot or live agents.</p>
+                            <h4 className="cell-title">Over 50 000 integrations out of the box </h4>
                             <a href="https://www.infobip.com/docs/api#channels/whatsapp" className="btn btn-default">Start Free Trial</a>
-                            
                         </div>
                     </div>
                     <div className="cell small-12 large-6">
