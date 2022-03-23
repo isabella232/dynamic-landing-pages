@@ -18,7 +18,7 @@ export default function Page({ datasource }) {
                         <div className="header-copy">
                             <h5 className="title-label">Free Trial</h5>
                             <h1 className="main-title">
-                              Get Your Own {datasource.channel} Business Account and Integrate in {datasource.platform} with {datasource.language}
+                              Get Your Own {datasource[0].channel} Business Account and Integrate in {datasource[0].appName} with {datasource[0].programmingLanguage}
                             </h1>
                             <p className="main-description">Say ˝Hello˝ to your customers on their favorite chat app and provide always-on service with a chatbot or live agents.</p>
                             <a href="https://www.infobip.com/docs/api#channels/whatsapp" className="btn btn-default">Start Free Trial</a>
@@ -128,29 +128,19 @@ export default function Page({ datasource }) {
         </footer>
 </div>
 
-  //   <div className={styles.container}>
-  //     <Head>
-  //       <title>Infobip</title>
-  //       <meta name="description" content="Integrations" />
-  //       <link rel="icon" href="/favicon.ico" />
-  //     </Head>
-
-  //     <main className={styles.main}>
-  //       <h1 className={styles.title}>
-  //         Integrate {datasource.channel} in {datasource.platform} with {datasource.language}
-  //       </h1>
-  //     </main>
-  //   </div>
   );
 }
 
 export async function getStaticPaths() {
-  // Call an external API endpoint to get posts
+  // Call an external API endpoint to get company name, 
+  // channel and integration unique URL
   const res = await fetch("http://localhost:4000/data");
   const pathsources = await res.json();
-  // Get the paths we want to pre-render based on posts
+  // Get the paths we want to pre-render based on data
+
+  //todo change "path" paramater
   const paths = pathsources.map((pathsource) => ({
-    params: { id: pathsource.path },
+    params: { id: pathsource.generatedUrl },
   }));
   // We'll pre-render only these paths at build time.
   // { fallback: false } means other routes should 404.
@@ -158,9 +148,10 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  // Call an external API endpoint to get posts
+  // Call an external API endpoint to get posts company name, 
+  // channel and integration unique URL
   const res = await fetch(`http://localhost:4000/data/${params.id}`);
-  const datasource = await res.json()
+  const datasource = await res.json();
   // By returning { props: { data } }, the page component
   // will receive `data` as a prop at build time
   return {
