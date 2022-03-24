@@ -134,11 +134,9 @@ export default function Page({ datasource }) {
 export async function getStaticPaths() {
   // Call an external API endpoint to get company name, 
   // channel and integration unique URL
-  const res = await fetch("http://localhost:4000/data");
+  const res = await fetch("https://infobipintegrations.azurewebsites.net/data");
   const pathsources = await res.json();
   // Get the paths we want to pre-render based on data
-
-  //todo change "path" paramater
   const paths = pathsources.map((pathsource) => ({
     params: { id: pathsource.generatedUrl },
   }));
@@ -150,8 +148,9 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   // Call an external API endpoint to get posts company name, 
   // channel and integration unique URL
-  const res = await fetch(`http://localhost:4000/data/${params.id}`);
+  const res = await fetch(`https://infobipintegrations.azurewebsites.net/data/${params.id}`);
   const datasource = await res.json();
+  console.log(datasource);
   // By returning { props: { data } }, the page component
   // will receive `data` as a prop at build time
   return {

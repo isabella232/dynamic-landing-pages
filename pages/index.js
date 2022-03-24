@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-export default function Home({datasource}) {
+export default function Home() {
   return (
     <div className="main-wrapper">
         {/* HEADER */}
@@ -124,19 +124,4 @@ export default function Home({datasource}) {
         </footer>
 </div>
   );
-}
-
-
-export async function getStaticProps() {
-  // Call an external API endpoint to get posts
-  const res = await fetch('http://localhost:4000/data')
-  const datasource = await res.json()
-  //console.log(datasource)
-  // By returning { props: { data } }, the Home component
-  // will receive `data` as a prop at build time
-  return {
-    props: {
-      datasource,
-    },
-  }
 }
