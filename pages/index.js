@@ -112,13 +112,6 @@ export default function Home() {
                         <li><a href="https://www.facebook.com/infobip" className="social-icon"><img src="/images/ic-footer-facebook.svg" alt="Facebook icon" /></a></li>
                     </ul>
                 </div>
-                <nav className="navigation terms-navigation">
-                    <ul>
-                        <li><a href="https://www.infobip.com/policies/terms" target="_blank">Service Terms &amp; Conditions</a></li>
-                        <li><a href="https://www.infobip.com/policies/privacy" target="_blank">Privacy Notice</a></li>
-                        <li><a href="https://www.infobip.com/terms-of-use" target="_blank">Terms of use</a></li>
-                    </ul>
-                </nav>
                 <small>Copyright © 2006-2022 Infobip ltd.</small>
             </div>
         </footer>
