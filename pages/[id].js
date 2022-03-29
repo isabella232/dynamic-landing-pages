@@ -18,14 +18,14 @@ export default function Page({ datasource }) {
                         <div className="header-copy">
                             <h5 className="title-label">Free Trial</h5>
                             <h1 className="main-title">
-                              Get Your Own {datasource[0].channel} Business Account and Integrate in {datasource[0].appName} with {datasource[0].programmingLanguage}
+                              Get Your Own {datasource?.[0].channel} Business Account and Integrate in {datasource?.[0].appName} with {datasource?.[0].programmingLanguage}
                             </h1>
                             <p className="main-description">Say ˝Hello˝ to your customers on their favorite chat app and provide always-on service with a chatbot or live agents.</p>
-                            <a href={'https://www.infobip.com/docs/api#channels/' + datasource[0].channel.toLowerCase() } className="btn btn-default">Start Free Trial</a>
+                            <a href={'https://www.infobip.com/docs/api#channels/' + datasource?.[0].channel.toLowerCase() } className="btn btn-default">Start Free Trial</a>
                         </div>
                     </div>
                     <div className="cell small-12 large-6">
-                    <Image src="/images/whatsappimage.png" alt={datasource[0].channel} width="300" height="500"/>
+                    <Image src="/images/whatsappimage.png" alt={datasource?.[0].channel} width="300" height="500"/>
                     </div>
                 </div>
             </div>
