@@ -142,7 +142,7 @@ export async function getStaticProps({ params }) {
   // channel and integration unique URL
   const res = await fetch(`https://infobipintegrations.azurewebsites.net/data/${params.id}`);
   const datasource = await res.json();
-  console.log(datasource);
+  //console.log(datasource);
   // By returning { props: { data } }, the page component
   // will receive `data` as a prop at build time
   return {
